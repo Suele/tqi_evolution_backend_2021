@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db_mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: db_credit_analysis
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: credit_analysis
+      MYSQL_PASSWORD: root
+    volumes:
+      - ${PWD}/mysqlVolume:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: 'bridge'
+    name: 'credit_analysis_network'
