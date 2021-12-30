@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          rel="stylesheet">
+    <!-- Fonte do Google-->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Cadastro de Cliente</title>
+</head>
+<style>
+    *{
+        font-family: 'Bebas Neue', cursive;
+        font-size: 1.2rem;
+    }
+
+
+</style>
+<body>
+
+<div class="container">
+    <div class="card p-3 my-3">
+        <h1>Cadastro de Cliente</h1>
+        <form action="/customer/register" class="my-2" method="post" name="teste" th:object="${customerDTO}">
+            <div class="form-group">
+                <label for="customerName">Nome Completo</label>
+                <input class="form-control" placeholder="Digite seu nome completo" th:field="*{customerName}"
+                       type="text"/>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cpf">CPF</label>
+                    <input class="form-control" placeholder="Digite seu CPF" th:field="*{cpf}" type="text"/>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="rg">RG</label>
+                    <input class="form-control" placeholder="Digite seu RG" th:field="*{rg}" type="text"/>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="income">Renda</label>
+                    <input class="form-control" placeholder="Digite o valor da sua income" th:field="*{income}"
+                           type="number"/>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">E-mail</label>
+                    <input class="form-control" placeholder="Digite seu e-mail" th:field="*{email}" type="email"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Senha</label>
+                    <input class="form-control" placeholder="Digite sua senha" th:field="*{password}" type="password"/>
+                </div>
+            </div>
+            <button class="btn btn-success btn-lg" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
