@@ -4,9 +4,7 @@ import com.credit.analysis.model.CustomerModel;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class CustomerDTO {
@@ -14,15 +12,18 @@ public class CustomerDTO {
 	private String customerName;
 
 	@CPF
+	@NotBlank(message = "O CPF é obrigatorio.")
 	private String cpf;
 
-	@Length(max = 11)
+	@Min( value = 11)
+	@NotBlank(message = "O RG é obrigatorio.")
 	private String rg;
 
-	@Digits(integer = 5, fraction = 2)
+	@Digits(integer = 5, fraction = 2, message = "A renda é obrigatoria.")
 	private BigDecimal income;
 
-	@Email
+	@Email(message = "Email invalido.")
+	@NotBlank(message = "O email é obrigatorio.")
 	private String email;
 
 	@NotBlank(message = "A senha é obrigatoria.")

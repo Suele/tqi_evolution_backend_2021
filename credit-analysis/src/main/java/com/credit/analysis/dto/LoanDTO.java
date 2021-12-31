@@ -50,8 +50,8 @@ public class LoanDTO {
 		this.amountPortion = amountPortion;
 	}
 
-	public LoanModel toNewLoan() {
-		LoanModel loanModel = new LoanModel(this.amountLoan, this.datePortion, this.amountPortion);
+	public LoanModel toNewLoan(LoanDTO newLoan) {
+		LoanModel loanModel = new LoanModel(newLoan.amountLoan, newLoan.datePortion, newLoan.amountPortion);
 		return loanModel;
 	}
 }

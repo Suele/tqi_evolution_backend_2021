@@ -29,6 +29,9 @@ public class CustomerModel {
 	@Column(nullable = false, unique = true)
 	private String password;
 
+	public CustomerModel() {
+	}
+
 	public CustomerModel(String customerName, String cpf, String rg, BigDecimal income, String email, String password) {
 		this.customerName = customerName;
 		this.cpf = cpf;
@@ -36,7 +39,6 @@ public class CustomerModel {
 		this.income = income;
 		this.email = email;
 		this.password = password;
-		this.setCustomerId(this.customerId);
 	}
 
 	public Long getCustomerId() {

@@ -23,12 +23,12 @@ public class CustomerController {
 	}
 
 
-	@PostMapping("/register")
+	@PostMapping("/teste")
 	public String createNewCustomer(@Valid CustomerDTO customerDTO, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "registration";
 		}
-		customerService.createNewCustomer(customerDTO);
+		customerService.createNewCustomer(customerDTO.toNewCustoner());
 		return "registration";
 	}
 }
