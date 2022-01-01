@@ -19,16 +19,16 @@ public class CustomerController {
 
 	@GetMapping("/register")
 	public String formCustomer(CustomerDTO customerDTO) {
-		return "registration";
+		return "register";
 	}
 
 
-	@PostMapping("/teste")
+	@PostMapping("/register-new")
 	public String createNewCustomer(@Valid CustomerDTO customerDTO, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return "registration";
+			return "register";
 		}
 		customerService.createNewCustomer(customerDTO.toNewCustoner());
-		return "registration";
+		return "register";
 	}
 }

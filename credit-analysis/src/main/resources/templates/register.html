@@ -18,16 +18,19 @@
         font-family: 'Bebas Neue', cursive;
         font-size: 1.2rem;
     }
+
+
 </style>
 <body>
 
 <div class="container">
     <div class="card p-3 my-3">
         <h1>Cadastro de Cliente</h1>
-        <form th:object="${customerDTO}" action="/customer/teste" method="post" class="my-2" name="registration">
+        <form th:object="${customerDTO}" action="/customer/register-new" method="post" class="my-2" name="register">
             <div class="form-group">
                 <label for="customerName">Nome Completo</label>
-                <input th:field="*{customerName}" th:errorclass="is-invalid" class="form-control" placeholder="Digite seu nome completo"
+                <input th:field="*{customerName}" th:errorclass="is-invalid" class="form-control"
+                       placeholder="Digite seu nome completo"
                        type="text"/>
                 <div th:errors="*{customerName}" class="invalid-feedback"></div>
             </div>
@@ -35,13 +38,15 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cpf">CPF</label>
-                    <input th:field="*{cpf}" th:errorclass="is-invalid" class="form-control" placeholder="Digite seu CPF"  type="text"/>
+                    <input th:field="*{cpf}" th:errorclass="is-invalid" class="form-control"
+                           placeholder="Digite seu CPF" type="text"/>
                     <div th:errors="*{cpf}" class="invalid-feedback"></div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="rg">RG</label>
-                    <input th:field="*{rg}" th:errorclass="is-invalid" class="form-control" placeholder="Digite seu RG"  type="text"/>
+                    <input th:field="*{rg}" th:errorclass="is-invalid" class="form-control" placeholder="Digite seu RG"
+                           type="text"/>
                     <div th:errors="*{rg}" class="invalid-feedback"></div>
                 </div>
             </div>
@@ -49,7 +54,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="income">Renda</label>
-                    <input th:field="*{income}" th:errorclass="is-invalid" class="form-control" placeholder="Digite o valor da sua renda"
+                    <input th:field="*{income}" th:errorclass="is-invalid" class="form-control"
+                           placeholder="Digite o valor da sua renda"
                            type="number"/>
                     <div th:errors="*{income}" class="invalid-feedback"></div>
                 </div>
@@ -58,12 +64,14 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input th:field="*{email}" th:errorclass="is-invalid" class="form-control" placeholder="Digite seu e-mail"  type="email"/>
+                    <input th:field="*{email}" th:errorclass="is-invalid" class="form-control"
+                           placeholder="Digite seu e-mail" type="email"/>
                     <div th:errors="*{email}" class="invalid-feedback"></div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password">Senha</label>
-                    <input th:field="*{password}" th:errorclass="is-invalid" class="form-control" placeholder="Digite sua senha"  type="password"/>
+                    <input th:field="*{password}" th:errorclass="is-invalid" class="form-control"
+                           placeholder="Digite sua senha" type="password"/>
                     <div th:errors="*{password}" class="invalid-feedback"></div>
                 </div>
             </div>
