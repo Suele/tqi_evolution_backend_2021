@@ -1,10 +1,12 @@
 package com.credit.analysis.dto;
 
 import com.credit.analysis.model.CustomerModel;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 public class CustomerDTO {
@@ -15,7 +17,7 @@ public class CustomerDTO {
 	@NotBlank(message = "O CPF é obrigatorio.")
 	private String cpf;
 
-	@Min( value = 11)
+	@Min(value = 11)
 	@NotBlank(message = "O RG é obrigatorio.")
 	private String rg;
 
