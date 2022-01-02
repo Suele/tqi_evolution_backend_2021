@@ -2,6 +2,7 @@ package com.credit.analysis.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity(name = "customerEntity")
 @Table(name = "customer")
@@ -28,6 +29,10 @@ public class CustomerModel {
 
 	@Column(nullable = false, unique = true)
 	private String password;
+
+	@OneToMany
+	@JoinColumn(name = "address_customer_id")
+	private List<AddressModel> addresses;
 
 	public CustomerModel() {
 	}
@@ -95,5 +100,13 @@ public class CustomerModel {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<AddressModel> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressModel> addresses) {
+		this.addresses = addresses;
 	}
 }
