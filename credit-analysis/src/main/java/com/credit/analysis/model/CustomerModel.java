@@ -9,7 +9,7 @@ import java.util.List;
 public class CustomerModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
+	@Column(name = "customer_id", nullable = false)
 	private Long customerId;
 
 	@Column(name = "customer_name", nullable = false, length = 100)
@@ -24,15 +24,19 @@ public class CustomerModel {
 	@Column(nullable = false, precision = 0)
 	private BigDecimal income;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 25)
 	private String email;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique = true, length = 10)
 	private String password;
 
 	@OneToMany
 	@JoinColumn(name = "address_customer_id")
 	private List<AddressModel> addresses;
+
+	@OneToMany
+	@JoinColumn(name = "loan_customer_id")
+	private List<LoanModel> loan;
 
 	public CustomerModel() {
 	}

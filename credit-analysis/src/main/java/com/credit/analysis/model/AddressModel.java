@@ -1,5 +1,7 @@
 package com.credit.analysis.model;
 
+import com.credit.analysis.AddressType;
+
 import javax.persistence.*;
 
 @Entity(name = "AddressEntity")
@@ -25,6 +27,10 @@ public class AddressModel {
 	@ManyToOne
 	@JoinColumn(name = "address_customer_id")
 	private CustomerModel customer;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "address_type", nullable = false, length = 15)
+	private AddressType addressType;
 
 	public Long getAddressId() {
 		return addressId;
@@ -72,5 +78,13 @@ public class AddressModel {
 
 	public void setCustomer(CustomerModel customer) {
 		this.customer = customer;
+	}
+
+	public AddressType getAddressType() {
+		return addressType;
+	}
+
+	public void setAddressType(AddressType addressType) {
+		this.addressType = addressType;
 	}
 }

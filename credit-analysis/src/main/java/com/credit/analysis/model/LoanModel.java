@@ -22,6 +22,10 @@ public class LoanModel {
 	@Column(name = "amount_portion", nullable = false)
 	private Long amountPortion;
 
+	@ManyToOne
+	@JoinColumn(name = "loan_customer_id")
+	private CustomerModel customer;
+
 	public LoanModel(BigDecimal amountLoan, LocalDate datePortion, Long amountPortion) {
 	}
 
@@ -55,5 +59,13 @@ public class LoanModel {
 
 	public void setAmountPortion(Long amountPortion) {
 		this.amountPortion = amountPortion;
+	}
+
+	public CustomerModel getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerModel customer) {
+		this.customer = customer;
 	}
 }
