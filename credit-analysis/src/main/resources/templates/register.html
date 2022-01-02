@@ -20,59 +20,61 @@
     }
 
 
+
+
 </style>
 <body>
 
 <div class="container">
     <div class="card p-3 my-3">
         <h1>Cadastro de Cliente</h1>
-        <form th:object="${customerDTO}" action="/customer/register-new" method="post" class="my-2" name="register">
+        <form action="/customer/register-new" class="my-2" method="post" name="register" th:object="${customerDTO}">
             <div class="form-group">
                 <label for="customerName">Nome Completo</label>
-                <input th:field="*{customerName}" th:errorclass="is-invalid" class="form-control"
-                       placeholder="Digite seu nome completo"
+                <input class="form-control" placeholder="Digite seu nome completo" th:errorclass="is-invalid"
+                       th:field="*{customerName}"
                        type="text"/>
-                <div th:errors="*{customerName}" class="invalid-feedback"></div>
+                <div class="invalid-feedback" th:errors="*{customerName}"></div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cpf">CPF</label>
-                    <input th:field="*{cpf}" th:errorclass="is-invalid" class="form-control"
-                           placeholder="Digite seu CPF" type="text"/>
-                    <div th:errors="*{cpf}" class="invalid-feedback"></div>
+                    <input class="form-control" placeholder="Digite seu CPF" th:errorclass="is-invalid"
+                           th:field="*{cpf}" type="text"/>
+                    <div class="invalid-feedback" th:errors="*{cpf}"></div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="rg">RG</label>
-                    <input th:field="*{rg}" th:errorclass="is-invalid" class="form-control" placeholder="Digite seu RG"
+                    <input class="form-control" placeholder="Digite seu RG" th:errorclass="is-invalid" th:field="*{rg}"
                            type="text"/>
-                    <div th:errors="*{rg}" class="invalid-feedback"></div>
+                    <div class="invalid-feedback" th:errors="*{rg}"></div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="income">Renda</label>
-                    <input th:field="*{income}" th:errorclass="is-invalid" class="form-control"
-                           placeholder="Digite o valor da sua renda"
+                    <input class="form-control" placeholder="Digite o valor da sua renda" th:errorclass="is-invalid"
+                           th:field="*{income}"
                            type="number"/>
-                    <div th:errors="*{income}" class="invalid-feedback"></div>
+                    <div class="invalid-feedback" th:errors="*{income}"></div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input th:field="*{email}" th:errorclass="is-invalid" class="form-control"
-                           placeholder="Digite seu e-mail" type="email"/>
-                    <div th:errors="*{email}" class="invalid-feedback"></div>
+                    <input class="form-control" placeholder="Digite seu e-mail" th:errorclass="is-invalid"
+                           th:field="*{email}" type="email"/>
+                    <div class="invalid-feedback" th:errors="*{email}"></div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password">Senha</label>
-                    <input th:field="*{password}" th:errorclass="is-invalid" class="form-control"
-                           placeholder="Digite sua senha" type="password"/>
-                    <div th:errors="*{password}" class="invalid-feedback"></div>
+                    <input class="form-control" placeholder="Digite sua senha" th:errorclass="is-invalid"
+                           th:field="*{password}" type="password"/>
+                    <div class="invalid-feedback" th:errors="*{password}"></div>
                 </div>
             </div>
             <button class="btn btn-success btn-lg" type="submit">Cadastrar</button>
