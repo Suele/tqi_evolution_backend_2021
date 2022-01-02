@@ -10,15 +10,16 @@ public class LoanModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "loan_id")
 	private Long loanId;
 
-	@Column(name = "amount_loan")
+	@Column(name = "amount_loan", nullable = false)
 	private BigDecimal amountLoan;
 
-	@Column(name = "date_portion")
+	@Column(name = "date_portion", nullable = false)
 	private LocalDate datePortion;
 
-	@Column(name = "amount_portion")
+	@Column(name = "amount_portion", nullable = false)
 	private Long amountPortion;
 
 	public LoanModel(BigDecimal amountLoan, LocalDate datePortion, Long amountPortion) {
