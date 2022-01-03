@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          rel="stylesheet">
+    <!-- Fonte do Google-->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Solicitação de Empréstimo</title>
+    <style>
+    *{
+        font-family: 'Bebas Neue', cursive;
+        font-size: 1.2rem;
+    }
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card p-3 my-3">
+        <h1>Solicitação de Empréstimo</h1>
+        <form action="/loan/register-new" class="my-2" method="post" name="loan" th:object="${loanDTO}">
+
+            <div class="col-md-5 mb-3">
+                <label for="amountLoan">Valor do Empréstimo</label>
+                <input class="form-control" placeholder="Digite o valor do empréstimo." th:errorclass="is-invalid"
+                       th:field="*{amountLoan}" type="number"/>
+                <div class="invalid-feedback" th:errors="*{amountLoan}"></div>
+            </div>
+
+            <div class="col-md-5 mb-3">
+                <label for="datePortion">Data do Pagamento da Primeira Parcela</label>
+                <input class="form-control" placeholder="Digite a data da primeira parcela." th:errorclass="is-invalid"
+                       th:field="*{datePortion}" th:text="${#dates.format(datePortion, 'dd-MM-yyyy')}" type="date"/>
+                <div class="invalid-feedback" th:errors="*{datePortion}"></div>
+            </div>
+
+            <div class="col-md-5 mb-3">
+                <label for="amountPortion">Número de Parcelas</label>
+                <input class="form-control" placeholder="Digite o número de parcelas" th:errorclass="is-invalid"
+                       th:field="*{amountPortion}" type="number"/>
+                <div class="invalid-feedback" th:errors="*{amountPortion}"></div>
+            </div>
+            <div class="col-md-5 mb-3">
+                <button class="btn btn-success btn-lg" type="submit">Solicitar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

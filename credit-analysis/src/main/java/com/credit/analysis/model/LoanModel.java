@@ -1,5 +1,7 @@
 package com.credit.analysis.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,13 +15,14 @@ public class LoanModel {
 	@Column(name = "loan_id")
 	private Long loanId;
 
-	@Column(name = "amount_loan", nullable = false)
+	@Column(name = "amount_loan")
 	private BigDecimal amountLoan;
 
 	@Column(name = "date_portion", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate datePortion;
 
-	@Column(name = "amount_portion", nullable = false)
+	@Column(name = "amount_portion")
 	private Long amountPortion;
 
 	@ManyToOne
@@ -27,6 +30,9 @@ public class LoanModel {
 	private CustomerModel customer;
 
 	public LoanModel(BigDecimal amountLoan, LocalDate datePortion, Long amountPortion) {
+		this.amountLoan = amountLoan;
+		this.datePortion = datePortion;
+		this.amountPortion = amountPortion;
 	}
 
 	public Long getLoanId() {

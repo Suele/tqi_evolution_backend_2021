@@ -1,38 +1,26 @@
 package com.credit.analysis.dto;
 
 import com.credit.analysis.model.LoanModel;
+import org.springframework.format.annotation.NumberFormat;
 
-import javax.validation.constraints.Future;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class LoanDTO {
 
-	@NotBlank(message = "O código do empréstimo é obrigatorio.")
-	private Long loanId;
-
-	@NotBlank(message = "O valor do empréstimo é Obrigatorio.")
+	@NotNull(message = "O valor do empréstimo é obrigatorio.")
+	@Digits(integer = 5, fraction = 2, message = "Valor digitado do empréstimo não é valido.")
 	private BigDecimal amountLoan;
 
-	@Future(message = "Data da parcela é invalida.")
+	@NotNull(message = "A data da primeira parcela é obrigatoria.")
 	private LocalDate datePortion;
 
+	@NotNull(message = "O número de parcelas é obrigatorio.")
 	@Max(value = 60, message = "O número máximo de parcelas são 60.")
 	private Long amountPortion;
-
-	public Long getLoanId() {
-		return loanId;
-	}
-
-	public BigDecimal getAmountLoan() {
-		return amountLoan;
-	}
-
-	public void setAmountLoan(BigDecimal amountLoan) {
-		this.amountLoan = amountLoan;
-	}
 
 	public LocalDate getDatePortion() {
 		return datePortion;
@@ -50,8 +38,16 @@ public class LoanDTO {
 		this.amountPortion = amountPortion;
 	}
 
-	public LoanModel toNewLoan(LoanDTO newLoan) {
-		LoanModel loanModel = new LoanModel(newLoan.amountLoan, newLoan.datePortion, newLoan.amountPortion);
+	public BigDecimal getAmountLoan() {
+		return amountLoan;
+	}
+
+	public void setAmountLoan(BigDecimal amountLoan) {
+		this.amountLoan = new BigDecimal(String.valueOf(amountLoan));
+	}
+
+	public LoanModel toNewLoan() {
+		LoanModel loanModel = new LoanModel(this.amountLoan, this.datePortion, this.amountPortion);
 		return loanModel;
 	}
 }
