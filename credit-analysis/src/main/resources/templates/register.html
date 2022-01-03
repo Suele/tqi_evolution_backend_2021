@@ -12,19 +12,13 @@
     <!-- Fonte do Google-->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Cadastro de Cliente</title>
-</head>
-<style>
+    <style>
     *{
         font-family: 'Bebas Neue', cursive;
         font-size: 1.2rem;
     }
-
-
-
-
-
-
-</style>
+    </style>
+</head>
 <body>
 
 <div class="container">
@@ -34,8 +28,7 @@
             <div class="form-group">
                 <label for="customerName">Nome Completo</label>
                 <input class="form-control" placeholder="Digite seu nome completo" th:errorclass="is-invalid"
-                       th:field="*{customerName}"
-                       type="text"/>
+                       th:field="*{customerName}" type="text"/>
                 <div class="invalid-feedback" th:errors="*{customerName}"></div>
             </div>
 

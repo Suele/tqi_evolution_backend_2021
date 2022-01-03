@@ -82,7 +82,6 @@ public class CustomerDTO {
 	public CustomerModel toNewCustoner() {
 		CustomerModel customerModel = new CustomerModel(this.customerName, this.cpf, this.rg,
 				this.income, this.email, this.password);
-
 		return customerModel;
 	}
 }
