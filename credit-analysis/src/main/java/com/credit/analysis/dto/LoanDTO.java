@@ -1,7 +1,7 @@
 package com.credit.analysis.dto;
 
+import com.credit.analysis.validation.annotation.DateFirstPortion;
 import com.credit.analysis.model.LoanModel;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
@@ -15,6 +15,7 @@ public class LoanDTO {
 	@Digits(integer = 5, fraction = 2, message = "Valor digitado do empréstimo não é valido.")
 	private BigDecimal amountLoan;
 
+	@DateFirstPortion
 	@NotNull(message = "A data da primeira parcela é obrigatoria.")
 	private LocalDate datePortion;
 
