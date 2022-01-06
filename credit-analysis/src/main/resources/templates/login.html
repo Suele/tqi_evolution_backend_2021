@@ -17,14 +17,6 @@
         font-family: 'Bebas Neue', cursive;
         font-size: 1.2rem;
     }
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -40,16 +32,16 @@
             You have been logged out.
         </div>
 
-        <form th:action="@{/login}" method="post" class="my-2">
+        <form class="my-2" method="post" th:action="@{/login}">
 
             <div class="col-md-6 mb-3">
                 <label for="email">Email</label>
-                <input class="form-control" type="text" placeholder="Digite o seu email."/>
+                <input class="form-control" placeholder="Digite o seu email." type="text"/>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="password">Senha</label>
-                <input class="form-control" type="password" placeholder="Digite a sua senha."/>
+                <input class="form-control" placeholder="Digite a sua senha." type="password"/>
             </div>
 
             <div class="col-md-5 mb-3">
