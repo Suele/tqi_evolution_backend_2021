@@ -1,7 +1,7 @@
 package com.credit.analysis.dto;
 
-import com.credit.analysis.validation.annotation.DateFirstPortion;
 import com.credit.analysis.model.LoanModel;
+import com.credit.analysis.validationDate.DateFirstPortion;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
