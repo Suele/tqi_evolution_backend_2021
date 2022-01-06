@@ -1,4 +1,4 @@
-package com.credit.analysis.validation;
+package com.credit.analysis.validationDate;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
