@@ -1,6 +1,6 @@
-package com.credit.analysis;
+package com.credit.analysis.validation;
 
-import com.credit.analysis.validation.annotation.DateFirstPortion;
+import com.credit.analysis.validation.DateFirstPortion;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
