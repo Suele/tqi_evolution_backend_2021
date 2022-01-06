@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          rel="stylesheet">
+    <!-- Fonte do Google-->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Login</title>
+    <style>
+    *{
+        font-family: 'Bebas Neue', cursive;
+        font-size: 1.2rem;
+    }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card p-3 my-3">
+
+        <h1>Login</h1>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+
+        <form th:action="@{/login}" method="post" class="my-2">
+
+            <div class="col-md-6 mb-3">
+                <label for="email">Email</label>
+                <input class="form-control" type="text" placeholder="Digite o seu email."/>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="password">Senha</label>
+                <input class="form-control" type="password" placeholder="Digite a sua senha."/>
+            </div>
+
+            <div class="col-md-5 mb-3">
+                <a class="navbar-brand" href="customer/register">Faça o seu cadastro aqui.</a>
+            </div>
+
+            <div class="col-md-5 mb-3">
+                <button class="btn btn-success btn-lg" type="submit">Fazer Login</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
