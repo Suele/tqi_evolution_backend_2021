@@ -15,14 +15,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/customer/register")
-				.authorizeRequests()
-				.anyRequest()
-				.authenticated()
+		http.authorizeRequests()
+				.antMatchers("/customer/register**")
+				.permitAll().anyRequest().authenticated()
 				.and()
-				.formLogin(form -> form
-						.loginPage("/login")
-						.permitAll());
+				.formLogin().loginPage("/login").permitAll();
 	}
 
 	@Bean
