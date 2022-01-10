@@ -25,12 +25,10 @@ public class LoanController {
 	@Autowired
 	private LoanRepository loanRepository;
 
-
 	@GetMapping("/{cpf}")
 	public ResponseEntity<List<ListLoanDTO>> getCustomer(@PathVariable("cpf") String cpf) {
 		return ResponseEntity.status(200).body(loanService.listLoan(cpf));
 	}
-
 
 	@GetMapping("/detail/{cpf}")
 	public ResponseEntity<List<LoanDetailDTO>> detail(@PathVariable("cpf") String cpf) {

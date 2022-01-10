@@ -46,6 +46,7 @@ public class AddressModel {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "address_type", nullable = false, length = 15)
+	@NotNull(message = "O tipo do endereço é obrigatório")
 	private AddressType addressType;
 
 	public Long getAddressId() {

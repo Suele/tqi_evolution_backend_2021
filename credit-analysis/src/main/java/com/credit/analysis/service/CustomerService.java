@@ -19,10 +19,6 @@ public class CustomerService {
 		if (customerModel != null) {
 			return customerRepository.save(customerModel);
 		}
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possivel slvar.");
-	}
-
-	public List<CustomerModel> getCustomer() {
-		return customerRepository.findAll();
+		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possivel salvar.");
 	}
 }
