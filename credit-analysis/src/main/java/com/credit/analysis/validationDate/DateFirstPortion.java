@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DateFirstPortion {
 
-	String message() default "A data da primeira parcela é inválida.";
+	String message() default "A data da primeira parcela deve ser no máximo 3 meses após o dia atual.";
 
 	Class<?>[] groups() default {};
 
