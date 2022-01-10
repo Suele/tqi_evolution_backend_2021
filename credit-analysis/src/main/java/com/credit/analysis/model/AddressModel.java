@@ -1,8 +1,12 @@
 package com.credit.analysis.model;
 
-import com.credit.analysis.AddressType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "AddressEntity")
 @Table(name = "address")
@@ -12,20 +16,32 @@ public class AddressModel {
 	@Column(name = "address_id")
 	private Long addressId;
 
-	@Column(length = 40, nullable = false)
+	@NotBlank(message = "O nome da rua é obrigatório.")
+	@Column(length = 40)
 	private String street;
 
-	@Column(length = 8, nullable = false)
+	@NotNull(message = "O número da rua é obrigatório.")
+	@Column(name = "street_number")
+	private Integer streetNumber;
+
+	@NotBlank(message = "O CEP é obrigatório.")
+	@Length(max = 8, message = "O CEP têm 8 caracteres.")
+	@Column(length = 8)
 	private String zipCode;
 
-	@Column(length = 40, nullable = false)
+	@NotBlank(message = "A cidade é obrigatória.")
+	@Length(min = 5, max = 40, message = "A cidade deve ser entre 5 e 40 caracteres.")
+	@Column(length = 40)
 	private String city;
 
-	@Column(length = 45, nullable = false)
+	@NotBlank(message = "O estado é obrigatorio.")
+	@Length(min = 5, max = 40, message = "O estado deve ser entre 5 e 40 caracteres.")
+	@Column(length = 45)
 	private String state;
 	//many - AddressModel, one-CustomerModel
 	@ManyToOne
 	@JoinColumn(name = "address_customer_id")
+	@JsonIgnore
 	private CustomerModel customer;
 
 	@Enumerated(EnumType.STRING)
@@ -46,6 +62,14 @@ public class AddressModel {
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public Integer getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(Integer streetNumber) {
+		this.streetNumber = streetNumber;
 	}
 
 	public String getZipCode() {
@@ -86,5 +110,19 @@ public class AddressModel {
 
 	public void setAddressType(AddressType addressType) {
 		this.addressType = addressType;
+	}
+
+	@Override
+	public String toString() {
+		return "AddressModel{" +
+				"addressId=" + addressId +
+				", street='" + street + '\'' +
+				", streetNumber=" + streetNumber +
+				", zipCode='" + zipCode + '\'' +
+				", city='" + city + '\'' +
+				", state='" + state + '\'' +
+				", customer=" + customer +
+				", addressType=" + addressType +
+				'}';
 	}
 }

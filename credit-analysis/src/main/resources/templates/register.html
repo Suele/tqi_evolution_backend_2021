@@ -13,10 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Cadastro de Cliente</title>
     <style>
-    *{
-        font-family: 'Bebas Neue', cursive;
-        font-size: 1.2rem;
-    }
+        *{
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.2rem;
+        }
+
 
     </style>
 </head>
@@ -26,9 +27,11 @@
     <div class="card p-3 my-3">
         <h1>Cadastro de Cliente</h1>
         <form action="/customer/register-new" class="my-2" method="post" name="register" th:object="${customerDTO}">
+            <!-- Dados Pessoais-->
             <div class="form-group">
                 <label for="customerName">Nome Completo</label>
-                <input class="form-control" placeholder="Digite seu nome completo" th:errorclass="is-invalid"
+                <input class="form-control" maxlength="100" placeholder="Digite seu nome completo"
+                       th:errorclass="is-invalid"
                        th:field="*{customerName}" type="text"/>
                 <div class="invalid-feedback" th:errors="*{customerName}"></div>
             </div>
@@ -36,14 +39,15 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="cpf">CPF</label>
-                    <input class="form-control" placeholder="Digite seu CPF" th:errorclass="is-invalid"
+                    <input class="form-control" maxlength="11" placeholder="Digite seu CPF" th:errorclass="is-invalid"
                            th:field="*{cpf}" type="text"/>
                     <div class="invalid-feedback" th:errors="*{cpf}"></div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="rg">RG</label>
-                    <input class="form-control" placeholder="Digite seu RG" th:errorclass="is-invalid" th:field="*{rg}"
+                    <input class="form-control" maxlength="11" placeholder="Digite seu RG" th:errorclass="is-invalid"
+                           th:field="*{rg}"
                            type="text"/>
                     <div class="invalid-feedback" th:errors="*{rg}"></div>
                 </div>
@@ -58,26 +62,64 @@
                     <div class="invalid-feedback" th:errors="*{income}"></div>
                 </div>
             </div>
+            <!-- ---------------------------------------------------------->
+            <!--------------------Endereço Completo ------------->
+            <div th:object="{customerDTO.addresses}" class="form-row my-4">
+                <div class="form-group col-md-6">
+                    <label>rua</label>
+                    <input class="form-control" placeholder="Digite o nome da sua rua."
+                           type="text" th:field="*{street}"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Cep</label>
+                    <input class="form-control" placeholder="Digite o seu CEP." type="text"
+                           th:field="*{zipCode}"/>
+                </div>
 
+                <div class="form-group col-md-6">
+                    <label>Cidade</label>
+                    <input class="form-control" placeholder="Digite a sua Cidade."
+                           type="text" th:field="*{city}"/>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Estado</label>
+                    <input class="form-control" placeholder="Digite o seu Estado." type="text"
+                           th:field="*{state}"/>
+                </div>
+
+                <!--                <div class="form-group col-md-6">-->
+                <!--                    <select class="form-control" th:field="*{}">-->
+                <!--                        <option selected>Tipo do Endereço</option>-->
+                <!--                    </select>-->
+                <!--                </div>-->
+            </div>
+            <!-- ------------------------------------------------>
+            <!-- Autenticação para fazer o login -->
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="email">E-mail</label>
-                    <input class="form-control" placeholder="Digite seu e-mail" th:errorclass="is-invalid"
+                    <input class="form-control" maxlength="45" placeholder="Digite seu e-mail"
+                           th:errorclass="is-invalid"
                            th:field="*{email}" type="email"/>
                     <div class="invalid-feedback" th:errors="*{email}"></div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password">Senha</label>
-                    <input class="form-control" placeholder="Digite sua senha" th:errorclass="is-invalid"
+                    <input class="form-control" maxlength="10" placeholder="Digite sua senha" th:errorclass="is-invalid"
                            th:field="*{password}" type="password"/>
                     <div class="invalid-feedback" th:errors="*{password}"></div>
                 </div>
-
+                <!-- ---------------------------------------------------------->
+                <!-- Link para a tela de cadastro de cliente -->
                 <div class="col-md-5 mb-3">
                     <a class="navbar-brand" href="/login">Já tenho cadastro.</a>
                 </div>
             </div>
-            <button class="btn btn-success btn-lg" type="submit">Cadastrar</button>
+            <!-- ----------------------------------------------------------->
+            <div>
+                <button class="btn btn-success btn-lg" type="submit">Cadastrar</button>
+            </div>
         </form>
     </div>
 </div>

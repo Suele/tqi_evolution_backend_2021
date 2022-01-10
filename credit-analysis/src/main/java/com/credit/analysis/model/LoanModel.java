@@ -1,10 +1,16 @@
 package com.credit.analysis.model;
 
+import com.credit.analysis.validationDate.DateFirstPortion;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity(name = "LoanEntity")
 @Table(name = "loan")
@@ -16,23 +22,35 @@ public class LoanModel {
 	private Long loanId;
 
 	@Column(name = "amount_loan")
+	@NotNull(message = "O valor do empréstimo é obrigatorio.")
+	@Digits(integer = 5, fraction = 2, message = "Valor digitado do empréstimo não é valido.")
 	private BigDecimal amountLoan;
 
-	@Column(name = "date_portion", nullable = false)
+	@DateFirstPortion
+	@NotNull(message = "A data da primeira parcela é obrigatoria.")
+	@Column(name = "date_portion")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate datePortion;
 
+
+	@NotNull(message = "O número de parcelas é obrigatorio.")
+	@Max(value = 60, message = "O número máximo de parcelas são 60.")
 	@Column(name = "amount_portion")
 	private Long amountPortion;
 
 	@ManyToOne
 	@JoinColumn(name = "loan_customer_id")
+	@JsonIgnore
 	private CustomerModel customer;
 
-	public LoanModel(BigDecimal amountLoan, LocalDate datePortion, Long amountPortion) {
+	public LoanModel() {
+	}
+
+	public LoanModel(BigDecimal amountLoan, LocalDate datePortion, Long amountPortion, CustomerModel customer) {
 		this.amountLoan = amountLoan;
 		this.datePortion = datePortion;
 		this.amountPortion = amountPortion;
+		this.customer = customer;
 	}
 
 	public Long getLoanId() {
@@ -73,5 +91,16 @@ public class LoanModel {
 
 	public void setCustomer(CustomerModel customer) {
 		this.customer = customer;
+	}
+
+	@Override
+	public String toString() {
+		return "LoanModel{" +
+				"loanId=" + loanId +
+				", amountLoan=" + amountLoan +
+				", datePortion=" + datePortion +
+				", amountPortion=" + amountPortion +
+				", customer=" + customer +
+				'}';
 	}
 }

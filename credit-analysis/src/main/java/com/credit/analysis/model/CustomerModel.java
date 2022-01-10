@@ -1,7 +1,14 @@
 package com.credit.analysis.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.aspectj.bridge.Message;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "customerEntity")
@@ -9,45 +16,67 @@ import java.util.List;
 public class CustomerModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id", nullable = false)
+	@Column(name = "customer_id")
 	private Long customerId;
 
-	@Column(name = "customer_name", nullable = false, length = 100)
+	@Column(name = "customer_name", length = 100)
+	@NotBlank(message = "Nome Completo é obrigatório.")
+	@Length(min = 5, max = 100, message = "O nome deve ser entre 5 e 100 caracteres.")
 	private String customerName;
 
-	@Column(nullable = false, length = 11, unique = true)
+
+	@CPF
+	@NotBlank(message = "O CPF é obrigatório.")
+	@Column(length = 11, unique = true)
 	private String cpf;
 
-	@Column(nullable = false, length = 11, unique = true)
+
+	@Min(value = 11)
+	@NotBlank(message = "O RG é obrigatório.")
+	@Column(length = 11, unique = true)
 	private String rg;
 
-	@Column(nullable = false, precision = 0)
+	@Digits(integer = 5, fraction = 2, message = "A renda é obrigatória.")
 	private BigDecimal income;
 
-	@Column(nullable = false, length = 25)
+	@Email(message = "Email inválido.")
+	@NotBlank(message = "O email é obrigatório.")
+	@Column(length = 45)
 	private String email;
 
-	@Column(nullable = false, unique = true, length = 10)
+	@NotBlank(message = "A senha é obrigatória.")
+	@Column(unique = true, length = 10)
 	private String password;
 
-	@OneToMany
-	@JoinColumn(name = "address_customer_id")
-	private List<AddressModel> addresses;
+	@NotEmpty()
+	@NotNull(message = "O endereço completo é obrigatório")
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			orphanRemoval = true,
+			mappedBy = "customer")
+	private List<AddressModel> addresses = new ArrayList<>();
 
-	@OneToMany
-	@JoinColumn(name = "loan_customer_id")
-	private List<LoanModel> loan;
+	@NotEmpty()
+	@NotNull(message = "Os dados do emprestimo são obrigatórios.")
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			orphanRemoval = true,
+			mappedBy = "customer")
+	private List<LoanModel> loan = new ArrayList<>();
 
 	public CustomerModel() {
 	}
 
-	public CustomerModel(String customerName, String cpf, String rg, BigDecimal income, String email, String password) {
+	public CustomerModel(String customerName, String cpf, String rg, BigDecimal income, String email,
+						 String password, List<AddressModel> addresses, List<LoanModel> loan) {
 		this.customerName = customerName;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.income = income;
 		this.email = email;
 		this.password = password;
+		this.addresses = addresses;
+		this.loan = loan;
 	}
 
 	public Long getCustomerId() {
@@ -112,5 +141,27 @@ public class CustomerModel {
 
 	public void setAddresses(List<AddressModel> addresses) {
 		this.addresses = addresses;
+	}
+
+	public List<LoanModel> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<LoanModel> loan) {
+		this.loan = loan;
+	}
+
+	public CustomerModel(Long customerId, String customerName,
+						 String cpf, String rg, BigDecimal income, String email,
+						 String password, List<AddressModel> addresses, List<LoanModel> loan) {
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.income = income;
+		this.email = email;
+		this.password = password;
+		this.addresses = addresses;
+		this.loan = loan;
 	}
 }

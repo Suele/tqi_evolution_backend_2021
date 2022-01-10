@@ -1,11 +1,14 @@
 package com.credit.analysis.service;
 
+import com.credit.analysis.dto.ListLoanDTO;
+import com.credit.analysis.dto.LoanDetailDTO;
 import com.credit.analysis.model.LoanModel;
 import com.credit.analysis.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class LoanService {
@@ -21,5 +24,13 @@ public class LoanService {
 			throw new RuntimeException("Data da primeira parcela é inválida, a data limite para a primeira parcela é: " + DateMaximaFirstInstallment);
 		}
 		return loanRepository.save(loanModel);
+	}
+
+	public List<ListLoanDTO> listLoan(String cpf) {
+		return loanRepository.listLoan(cpf);
+	}
+
+	public List<LoanDetailDTO> loanDetail(String cpf) {
+		return loanRepository.loanDetail(cpf);
 	}
 }
