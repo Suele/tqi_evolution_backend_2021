@@ -1,18 +1,21 @@
 # TQI Evolution Backend
-API de analise de credito, 
 
 ## Funcionalidades Solicitadas no desafio.
-[X] Cadastro de clientes
+- [X] Cadastro de clientes
 O cliente pode cadastrar: nome, e-mail, CPF, RG, endereço completo, renda e senha.
 
-[X] Solicitação de empréstimo
+- [X] Solicitação de empréstimo
 Para solicitar um empréstimo, precisamos do valor do empréstimo, data da primeira parcela e quantidade de parcelas.
 O máximo de parcelas será 60 e a data da primeira parcela deve ser no máximo 3 meses após o dia atual.
 
-[X] Acompanhamento das solicitações de empréstimo
+- [X] Acompanhamento das solicitações de empréstimo
 O cliente pode visualizar a lista de empréstimos solicitados por ele mesmo e também os detalhes de um de seus empréstimos.
 Na listagem, devemos retornar no mínimo o código do empréstimo, o valor e a quantidade de parcelas.
 No detalhe do empréstimo, devemos retornar: código do empréstimo, valor, quantidade de parcelas, data da primeira parcela, 
 e-mail do cliente e renda do cliente.
 
-[ ] Login a autenticação será realizada por e-mail e senha.
+- [ ] Login a autenticação será realizada por e-mail e senha.
+
+Para resolver o desafio proposto foi construido uma API Rest utilizando a linguagem de programação java,
+banco de dados mysql em um container docker que é executado pelo docker compose, a seguir será detalhado 
+como o banco de dados foi estruturado e o porque das escolhas.
