@@ -35,3 +35,20 @@ Foi observado que as informações abaixo representam caracteristicas proprias d
 a validação destes dados antes de salvar no banco de dados.
  - O máximo de parcelas são 60.
  - Data da primeira parcela deve ser no máximo 3 meses após o dia atual.
+
+###Arquitetura da api
+A API foi implementada utilizando a arquitetura monolítica, onde tem-se um acoplamento maior dos componentes
+o que pode ocasionar em um efeito colateral em cascata como por exemplo a API toda pode ficar sem receber e processar 
+requisições, porque teve um erro que gerou outros erros em cascata. Foi a arquitetura escolhida para solucionar o desafio por ser mais simples e porque é a que tenho mais 
+conhecimento.
+<br></br>
+
+###Recursos Disponíveis
+
+| Metodo                     |     | recurso                                                                                           |     |
+|----------------------------|-----|--------------------------------------------------------------------------------------------------------|-----|
+| post                       |     | /customer - cadastro de cliente                                                                   |     |
+| post                       |     | /address/{customerId} -  cadastra o endereço de um cliente que já tenha cadastro.                 |     |
+| post                       |     | /loan/{customerId} - cadastra a solicitação do emprestimo de um cliente que já tenha cadastro.    |     |
+| get                        |     | /loan/{cpf} -- Lista de Emprestimos solicitados pelo cliente.                                     |     |
+| get                        |     | /loan//detail/{cpf}  - Lista de detalhes dos emprestimos.                                         |     |
